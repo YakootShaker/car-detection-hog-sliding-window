@@ -1,6 +1,14 @@
 # Vehicle Detection using HOG and Sliding Window
 
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![OpenCV](https://img.shields.io/badge/opencv-%23white.svg?style=for-the-badge&logo=opencv&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
+
 An implementation of a classic computer vision object detection pipeline. This project uses Histogram of Oriented Gradients (HOG) features, a Linear Support Vector Machine (SVM), and a Sliding Window approach to detect vehicles.
+
+## Core Concepts
+* **HOG (Histogram of Oriented Gradients):** A feature extraction technique that helps the computer "see" shapes. Instead of looking at raw pixel colors, HOG analyzes the edges and the direction of light-to-dark transitions (gradients) in an image. This makes it incredibly effective at recognizing the structural outline of a car, regardless of whether the car is red, blue, in bright sunlight, or in the shadows.
+* **Sliding Window:** A spatial scanning technique used to locate objects. Imagine taking a small rectangular frame and sliding it step-by-step across a larger photograph. At every single stop, the system extracts the HOG features of that specific patch and asks the trained classifier, "Is there a car inside this exact frame?" 
 
 ## Dataset
 This project utilizes the **UIUC Image Database for Car Detection**. 
@@ -9,15 +17,15 @@ This project utilizes the **UIUC Image Database for Car Detection**.
 
 ## Pipeline Architecture
 1.  **Data Preparation:** Automated downloading, extraction, and sorting of positive and negative training images.
-2.  **Feature Extraction:** Computing HOG descriptors to capture gradient structures (edges and shapes) rather than raw pixel intensities.
+2.  **Feature Extraction:** Computing HOG descriptors to capture gradient structures.
 3.  **Classifier Training:** Training a `LinearSVC` model to distinguish between "Car" and "Non-Car" spatial features.
 4.  **Sliding Window Detection:** Scanning a test image at various locations to locate the target object.
 5.  **Non-Maximum Suppression (NMS):** Filtering out overlapping bounding boxes to yield a single, highly confident detection per vehicle.
 
 ## Data Visualization
-To understand how the SVM distinguishes vehicles, we visualize the HOG features. Notice how the HOG gradient map heavily highlights the structural edges of the cars, which makes the classifier highly robust against lighting changes.
+To understand how the SVM distinguishes vehicles, we visualize the HOG features. Notice how the HOG gradient map heavily highlights the structural edges of the cars, making the classifier highly robust.
 
-![Dataset Samples and HOG Features](asset1.png)
+![Dataset Samples and HOG Features](asset1.pngg)
 
 ## Detection Results
 Applying the sliding window across a test image initially results in multiple overlapping detections around the target. By applying Non-Maximum Suppression (NMS) via OpenCV, we refine these into a single, accurate bounding box.
