@@ -25,7 +25,7 @@ This project utilizes the **UIUC Image Database for Car Detection**.
 ## Data Visualization
 To understand how the SVM distinguishes vehicles, we visualize the HOG features. Notice how the HOG gradient map heavily highlights the structural edges of the cars, making the classifier highly robust.
 
-![Dataset Samples and HOG Features](asset1.pngg)
+![Dataset Samples and HOG Features](asset1.png)
 
 ## Detection Results
 Applying the sliding window across a test image initially results in multiple overlapping detections around the target. By applying Non-Maximum Suppression (NMS) via OpenCV, we refine these into a single, accurate bounding box.
